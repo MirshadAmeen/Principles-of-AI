@@ -1,0 +1,8 @@
+# Example bytes data (UTF-8 encoded string)
+bytes_data = b"Hello, World!"
+
+# Convert bytes to string using decode()
+string_data = bytes_data.decode('utf-8')
+
+# Print the converted string
+print("Converted string:", string_data)
