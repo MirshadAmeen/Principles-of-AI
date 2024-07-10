@@ -1,0 +1,30 @@
+class Car:
+    def __init__(self, make, model, year):
+        self.__make = make    # Private attribute
+        self.__model = model  # Private attribute
+        self.__year = year    # Private attribute
+
+    # Getter method to access private attribute 'make'
+    def get_make(self):
+        return self.__make
+
+    # Setter method to modify private attribute 'make'
+    def set_make(self, make):
+        self.__make = make
+
+    # Method to display car information
+    def display_info(self):
+        print(f"Car: {self.__year} {self.__make} {self.__model}")
+
+# Example usage of the Car class
+if __name__ == "__main__":
+    car1 = Car("Toyota", "Camry", 2022)
+    
+    # Accessing private attribute using getter method
+    print("Car make:", car1.get_make())
+    
+    # Modifying private attribute using setter method
+    car1.set_make("Honda")
+    
+    # Calling method to display car information
+    car1.display_info()
