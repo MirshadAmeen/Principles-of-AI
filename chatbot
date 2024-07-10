@@ -1,0 +1,54 @@
+import nltk
+from nltk.stem import PorterStemmer
+from nltk.tokenize import word_tokenize
+
+# Initialize NLTK
+nltk.download('punkt')
+
+# Define responses
+responses = {
+    "hi": "Hello!",
+    "how are you?": "I'm good, thank you!",
+    "bye": "Goodbye!",
+    "default": "Sorry, I don't understand that."
+}
+
+# Function to process user input
+def process_text(input_text):
+    # Tokenize the input
+    tokens = word_tokenize(input_text.lower())
+    
+    # Stemming
+    stemmer = PorterStemmer()
+    stemmed_tokens = [stemmer.stem(token) for token in tokens]
+    
+    return stemmed_tokens
+
+# Function to get response based on user input
+def get_response(input_text):
+    # Process the input
+    tokens = process_text(input_text)
+    
+    # Check for keywords and return the appropriate response
+    for token in tokens:
+        if token in responses:
+            return responses[token]
+    
+    return responses["default"]
+
+# Main loop to run the chatbot
+def main():
+    print("Chatbot: Hello! How can I help you?")
+    
+    while True:
+        user_input = input("You: ").strip().lower()
+        
+        if user_input == 'exit':
+            print("Chatbot: Goodbye!")
+            break
+        
+        response = get_response(user_input)
+        print("Chatbot:", response)
+
+if __name__ == "__main__":
+    main()
